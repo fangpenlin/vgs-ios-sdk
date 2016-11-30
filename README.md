@@ -55,7 +55,13 @@ VaultAPI *api = [[VaultAPI alloc] initWithBaseURL:[NSURL URLWithString:@"https:/
 To install the VaultSDK via [CocoaPods](https://cocoapods.org), put following line in your Podfile
 
 ```
-pod 'VaultSDK', '~> 1.0'
+pod 'VaultSDK', '~> 1.0.0-alpha-3'
+```
+
+For Swift 2.3, please use `0.0.x` version instead. You can install it via
+
+```
+pod 'VaultSDK', '~> 0.0.1-alpha-1'
 ```
 
 ## Install via Carthage
@@ -64,6 +70,12 @@ To install the VaultSDK via [Carthage](https://github.com/Carthage/Carthage), pu
 
 ```
 github "verygoodsecurity/vgs-ios-sdk" ~> 1.0
+```
+
+For Swift 2.3, please use `swift-2.3` branch instead. You can install it via
+
+```
+github "verygoodsecurity/vgs-ios-sdk" "swift-2.3"
 ```
 
 ## Run example app
