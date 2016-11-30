@@ -11,7 +11,7 @@ import XCTest
 @testable import VaultSDK
 
 class AcceptanceTests: XCTestCase {
-    static let baseURL = URL(string: "https://demo.sandbox.verygoodvault.com")!
+    static let baseURL = NSURL(string: "https://demo.sandbox.verygoodvault.com")!
     static let publishableKey = "demo-user"
 
     override func setUp() {
@@ -24,9 +24,9 @@ class AcceptanceTests: XCTestCase {
             publishableKey: AcceptanceTests.publishableKey
         )
 
-        let exp = expectation(description: "token created")
+        let exp = expectationWithDescription("token created")
         api.createToken(
-            payload: "4111111111111111",
+            "4111111111111111",
             failure: { error in
                 XCTFail("Failed to create token, error=\(error)")
                 exp.fulfill()
@@ -40,7 +40,7 @@ class AcceptanceTests: XCTestCase {
                 exp.fulfill()
             }
         )
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectationsWithTimeout(10, handler: nil)
     }
 
     func testCreateTokenWithBadKey() {
@@ -48,11 +48,11 @@ class AcceptanceTests: XCTestCase {
             baseURL: AcceptanceTests.baseURL,
             publishableKey: "bad key"
         )
-        let exp = expectation(description: "token creation failed")
+        let exp = expectationWithDescription("token creation failed")
         api.createToken(
-            payload: "4111111111111111",
+            "4111111111111111",
             failure: { error in
-                XCTAssertEqual(error.code, VaultAPIError.badResponse.rawValue)
+                XCTAssertEqual(error.code, VaultAPIError.BadResponse.rawValue)
                 XCTAssertEqual((error.userInfo["status_code"] as? NSNumber)?.intValue, 401)
                 exp.fulfill()
             },
@@ -61,6 +61,6 @@ class AcceptanceTests: XCTestCase {
                 exp.fulfill()
             }
         )
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectationsWithTimeout(10, handler: nil)
     }
 }
