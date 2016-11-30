@@ -25,22 +25,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func tokenizeButtonTapped(_ sender: Any) {
+    @IBAction func tokenizeButtonTapped(sender: AnyObject) {
         let api = VaultAPI(
-            baseURL: URL(string: "https://demo.sandbox.verygoodvault.com")!,
+            baseURL: NSURL(string: "https://demo.sandbox.verygoodvault.com")!,
             publishableKey: "demo-user"
         )
         api.createToken(
-            payload: senstiveDataField.text!,
+            senstiveDataField.text!,
             failure: { error in
                 print("Error: \(error)")
-                DispatchQueue.main.async {
+                dispatch_async(dispatch_get_main_queue()) {
                     self.tokenResultField.text = "Error: \(error)"
                 }
             },
             success: { [unowned self] token in
                 print("Token: \(token)")
-                DispatchQueue.main.async {
+                dispatch_async(dispatch_get_main_queue()) {
                     self.tokenResultField.text = token["id"] as? String
                 }
             }
