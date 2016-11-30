@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'VaultSDK'
-  spec.version      = '1.0.0-alpha-2'
+  spec.version      = '0.0.1-alpha-1'
   spec.summary      = 'Very Good Security Vault iOS SDK for tokenizing senstive data'
   spec.homepage     = 'https://github.com/verygoodsecurity/vgs-ios-sdk'
   spec.license      = 'MIT'
@@ -13,6 +13,6 @@ Pod::Spec.new do |spec|
   }
   spec.source_files = 'VaultSDK/**.swift', 'VaultSDK/**/*.swift'
   spec.pod_target_xcconfig = {
-    'SWIFT_VERSION' => '3.0'
+    'SWIFT_VERSION' => '2.3'
   }
 end
